@@ -1,11 +1,15 @@
+import dotenv from 'dotenv';
 import { createPool } from 'mysql2';
 
-// Create a connection pool
+// Load environment variables from .env file
+dotenv.config();
+
+// Create a connection pool using environment variables
 const pool = createPool({
-  host: 'localhost',        // Your database host
-  user: 'root',             // Your database username
-  password: '1234', // Your database password
-  database: 'myworks', // Your database name
+  host: process.env.DB_HOST,      // Your database host from .env
+  user: process.env.DB_USER,      // Your database username from .env
+  password: process.env.DB_PASSWORD, // Your database password from .env
+  database: process.env.DB_NAME   // Your database name from .env
 });
 
 // Export a promise-based pool
