@@ -1,9 +1,10 @@
-import { Router } from 'express';
-import  saveUser  from '../controllers/userController.js';
+import express from 'express';
+import promisePool from '../db/dbConfig.js'; // Assuming dbConfig.js is in the parent directory
+import saveUser from '../controllers/userController.js';
 
-const router = Router();
+const router = express.Router();
 
-// Route to save user data
-router.post('/save-user', saveUser);
+// Route for basic user registration
+router.post('/register',saveUser );
 
 export default router;

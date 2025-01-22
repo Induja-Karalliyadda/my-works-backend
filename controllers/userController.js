@@ -1,4 +1,4 @@
-import  promisePool from '../db/dbConfig.js'; // Assuming db.js is in the parent directory
+import promisePool from '../db/dbConfig.js'; // Assuming db.js is in the parent directory
 
 const saveUser = async (req, res) => {
   const { fullName, email, password, userRole } = req.body;
@@ -10,7 +10,7 @@ const saveUser = async (req, res) => {
   try {
     const query = 'INSERT INTO users (fullName, email, password, userRole) VALUES (?, ?, ?, ?)';
     const values = [fullName, email, password, userRole || 'user']; // Default to 'user' if not provided
-    const [result] = await promisePool(query, values);  // Using the promise-based pool for query
+    const [result] = await promisePool.execute(query, values);  // Correctly using execute method for queries
 
     res.status(201).json({
       message: 'User saved successfully!',
