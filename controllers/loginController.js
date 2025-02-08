@@ -1,5 +1,7 @@
 import promisePool from "../db/dbConfig.js"; // Assuming db.js is in the parent directory
 import jwt from "jsonwebtoken";
+
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 
