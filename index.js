@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRoutes from './router/userRoutes.js';
 import courseRoute from './router/courseRoutes.js';
+import enrollmentRoutes from "./router/enrollmentRouts.js";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -22,7 +23,7 @@ app.use(express.json()); // ✅ Correct way to parse JSON
 // Routes
 app.use('/api', userRoutes);
 app.use('/api', courseRoute);
-
+app.use("/api", enrollmentRoutes);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
