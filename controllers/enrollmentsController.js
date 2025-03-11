@@ -53,3 +53,14 @@ export const getUserEnrollments = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+// Get all enrollments
+export const getAllEnrollments = async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM  enrollments");
+    
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error("Error fetching all enrollments:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
